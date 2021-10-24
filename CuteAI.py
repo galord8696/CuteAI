@@ -42,7 +42,9 @@ class GUI(ttk.Frame):
         self.logo_img = tkinter.PhotoImage(name='logo', file='images/cuteAI_1_10.png')
         self.plotImage = tkinter.PhotoImage(name=self.plotPath, file=self.plotPath)
         self.privacy_img = tkinter.PhotoImage(name='privacy', file='images/pipeLine.png')
-
+        
+        self.inThread = False
+        self.process = None
         # header
         header_frame = ttk.Frame(self, padding=20, style='secondary.TFrame')
         header_frame.grid(row=0, column=0, columnspan=3, sticky='ew')
@@ -188,6 +190,9 @@ class GUI(ttk.Frame):
 
         self.advanced_parameters = [a_tsize_entry, a_bsize_entry, a_lr_entry, a_epochs_entry]
 
+        a_nn_label = ttk.Label(wt_canvas_a, text="Neural Network Design:")
+        a_nn_label.place(x = 10, y = 500)
+
         notebook.add(simple_tab, text='Simple')
         notebook.add(intermediate_tab, text='Intermediate')
         notebook.add(advanced_tab, text='Advanced')
@@ -254,6 +259,15 @@ class GUI(ttk.Frame):
         i_a_mnist.attach(t_a.canvas, y = 40)
         i_a_cl = icon.Icon("a_CLAS", 'images/scale.png')
         i_a_cl.attach(t_a.canvas, y = 170)
+
+        i_a_relu = icon.Icon("a_RELU", 'images/relu.png')
+        i_a_relu.attach(t_a.canvas, x = 10, y = 530)
+
+        i_a_dropout = icon.Icon("a_DROPOUT", 'images/dropout.png')
+        i_a_dropout.attach(t_a.canvas, x = 100, y = 530)
+
+        i_a_weights = icon.Icon("a_weights", 'images/weights.png')
+        i_a_weights.attach(t_a.canvas, x = 190, y = 530)
         
     def runAI(self):
         icons = self.testMain.currentIcons
