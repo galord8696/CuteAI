@@ -271,8 +271,7 @@ class GUI(ttk.Frame):
             self.setRecommendedParameters(tsize, bsize, lr, epochs)
             self.update_plot()
             _thread.start_new_thread(self.singan, (tsize, bsize, lr, epochs))
-
-        if "i_GAN" in icons and "i_MNIST" in icons:
+        elif "i_GAN" in icons and "i_MNIST" in icons:
             self.plotPath = 'images/SinGAN.png'
 
             bsize = 32
@@ -282,8 +281,7 @@ class GUI(ttk.Frame):
             self.setRecommendedParameters("Not Used", bsize, lr, epochs)
             self.update_plot()
             _thread.start_new_thread(self.mnistgan, (bsize, lr, epochs))
-
-        if "a_GAN" in icons and "a_MNIST" in icons:
+        elif "a_GAN" in icons and "a_MNIST" in icons:
             self.advanced_parameters[0].insert(0, "Not Used: ")
             bsize = int(self.advanced_parameters[1].get())
             lr = float(self.advanced_parameters[2].get())
@@ -292,8 +290,7 @@ class GUI(ttk.Frame):
             self.plotPath = 'images/mnistGAN.png'
             self.update_plot()
             _thread.start_new_thread(self.mnistgan, (bsize, lr, epochs))
-        
-        if "a_GAN" in icons and "a_SIN" in icons:
+        elif "a_GAN" in icons and "a_SIN" in icons:
             tsize = int(self.advanced_parameters[0].get())
             bsize = int(self.advanced_parameters[1].get())
             lr = float(self.advanced_parameters[2].get())
