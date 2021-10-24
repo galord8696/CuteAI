@@ -28,7 +28,7 @@ $ conda activate CuteAI
 $ python CuteAI.py
 ```
 ## Usage
-
+This is a prototype. Please reload every run.
 ```
 $ python CuteAI
 ```
