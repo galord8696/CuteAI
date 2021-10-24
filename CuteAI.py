@@ -270,6 +270,7 @@ class GUI(ttk.Frame):
         i_a_weights.attach(t_a.canvas, x = 190, y = 530)
         
     def runAI(self):
+        self.clearPlot()
         icons = self.testMain.currentIcons
         if len(icons) == 0:
             return
@@ -286,11 +287,11 @@ class GUI(ttk.Frame):
             self.update_plot()
             _thread.start_new_thread(self.singan, (tsize, bsize, lr, epochs))
         elif "i_GAN" in icons and "i_MNIST" in icons:
-            self.plotPath = 'images/SinGAN.png'
+            self.plotPath = 'images/mnistGAN.png'
 
             bsize = 32
             lr = 0.0001
-            epochs = 50
+            epochs = 1
 
             self.setRecommendedParameters("Not Used", bsize, lr, epochs)
             self.update_plot()
@@ -330,6 +331,9 @@ class GUI(ttk.Frame):
     def mnistgan(self, batch_size, lr, epochs):
         gan = mnistGAN(batch_size)
         gan.train(lr, epochs)
+
+    def clearPlot(self):
+        self.window = self.canvas.create_window(280, 498, window=self.label, anchor='center')
 
     def update_plot(self):
         self.plotImage = tkinter.PhotoImage(file=self.plotPath)
